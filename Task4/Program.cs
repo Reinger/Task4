@@ -23,18 +23,18 @@ namespace Task4
                     Console.ReadLine();
                     Console.Clear();
                 }
-
-                if (k<=1)
+                else if (k<=0 || k>=1)
                 {
-                    Console.WriteLine("Ошибка ввода. Слишком маленькое число");
+                    Console.WriteLine("Ошибка ввода. Выход за границы");
                     Console.ReadLine();
                     Console.Clear();
+                    ok = false;
                 }
             } while (!ok);
             return k;
         }
 
-        static double Func(double i, double s)
+        static double Func(double i)
         {
             return 1 / (i * i);
         }
@@ -45,14 +45,14 @@ namespace Task4
             double s=0;
             double i = 1;
 
-            do
+            while (Func(i) >= e)
             {
-                s += Func(i, s);
+                s+= Func(i);
                 i++;
-            } while (s>=e);
+            } 
 
             Console.Clear();
-            Console.WriteLine("I={0}", i);
+            Console.WriteLine("I={0}", --i);
             Console.WriteLine("S={0}", s);
             Console.ReadLine();
         }
